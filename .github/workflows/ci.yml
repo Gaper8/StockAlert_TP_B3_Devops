@@ -76,20 +76,20 @@ jobs:
 
       # Scan Trivy — bloque si CRITICAL détectée
       # Le push ne s'exécute PAS si Trivy échoue
-      - name: Scan de sécurité Trivy
-        run: |
-          docker run --rm \
-            -v /var/run/docker.sock:/var/run/docker.sock \
-            ghcr.io/aquasecurity/trivy:latest image \
-            --exit-code 1 \
-            --severity CRITICAL \
-            ${{ secrets.DOCKER_USERNAME }}/stockalert:${{ steps.vars.outputs.tag }}
+      # - name: Scan de sécurité Trivy
+      #   run: |
+      #     docker run --rm \
+      #       -v /var/run/docker.sock:/var/run/docker.sock \
+      #       ghcr.io/aquasecurity/trivy:latest image \
+      #       --exit-code 1 \
+      #       --severity CRITICAL \
+      #       ${{ secrets.DOCKER_USERNAME }}/stockalert:${{ steps.vars.outputs.tag }}
 
-      - name: Push sur Docker Hub
-        run: |
-          echo "${{ secrets.DOCKER_PASSWORD }}" | docker login \
-            -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
-          docker push ${{ secrets.DOCKER_USERNAME }}/stockalert:${{ steps.vars.outputs.tag }}
+      # - name: Push sur Docker Hub
+      #   run: |
+      #     echo "${{ secrets.DOCKER_PASSWORD }}" | docker login \
+      #       -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+      #     docker push ${{ secrets.DOCKER_USERNAME }}/stockalert:${{ steps.vars.outputs.tag }}
 
   # ── JOB 4 : DEPLOY STAGING ────────────────────────────────────────
   # Uniquement sur push vers la branche staging
