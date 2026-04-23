@@ -74,6 +74,7 @@ jobs:
           docker build \
             -t ${{ secrets.DOCKER_USERNAME }}/stockalert:${{ steps.vars.outputs.tag }} .
 
+      #
       # # Scan Trivy — bloque si CRITICAL détectée
       # # Le push ne s'exécute PAS si Trivy échoue
       # - name: Scan de sécurité Trivy
