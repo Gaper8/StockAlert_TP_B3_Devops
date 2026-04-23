@@ -85,11 +85,11 @@ jobs:
       #       --severity CRITICAL \
       #       ${{ secrets.DOCKERHUB_USERNAME }}/stockalert:${{ steps.vars.outputs.tag }}
 
-      # - name: Push sur Docker Hub
-      #   run: |
-      #     echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login \
-      #       -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
-      #     docker push ${{ secrets.DOCKERHUB_USERNAME }}/stockalert:${{ steps.vars.outputs.tag }}
+      - name: Push sur Docker Hub
+        run: |
+          echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login \
+            -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/stockalert:${{ steps.vars.outputs.tag }}
 
   # ── JOB 4 : DEPLOY STAGING ────────────────────────────────────────
   # Uniquement sur push vers la branche staging
