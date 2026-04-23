@@ -75,7 +75,7 @@ jobs:
             -t ${{ secrets.DOCKERHUB_USERNAME }}/stockalert:${{ steps.vars.outputs.tag }} .
 
       # Scan Trivy — bloque si CRITICAL détectée
-      # Le push ne s'exécute PAS si Trivy échoue
+      # Le push ne s'exécute PAS si Trivy échoue##
       - name: Scan de sécurité Trivy
         run: |
           docker run --rm \
