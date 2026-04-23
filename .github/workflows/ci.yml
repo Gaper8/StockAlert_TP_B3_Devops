@@ -48,7 +48,7 @@ jobs:
         run: npm run lint
 
   # ── JOB 3 : BUILD + TRIVY + PUSH ──────────────────────────────────
-  # Déclenché sur tag v* OU push staging — pas sur push main
+  # Déclenché sur tag v* OU push staging — pas sur push maindzd
   build:
     name: Build, Scan & Push
     runs-on: ubuntu-latest
