@@ -86,7 +86,7 @@ jobs:
       #       --exit-code 1 \
       #       --severity CRITICAL \
       #       ${{ secrets.DOCKERHUB_USERNAME }}/stockalert:${{ steps.vars.outputs.tag }}
-      #############
+      #################
 
       - name: Push sur Docker Hub
         run: |
