@@ -76,14 +76,14 @@ jobs:
 
       # Scan Trivy — bloque si CRITICAL détectée
       # Le push ne s'exécute PAS si Trivy échoue
-      # - name: Scan de sécurité Trivy
-      #   run: |
-      #     docker run --rm \
-      #       -v /var/run/docker.sock:/var/run/docker.sock \
-      #       ghcr.io/aquasecurity/trivy:latest image \
-      #       --exit-code 1 \
-      #       --severity CRITICAL \
-      #       ${{ secrets.DOCKERHUB_USERNAME }}/stockalert:${{ steps.vars.outputs.tag }}
+      - name: Scan de sécurité Trivy
+        run: |
+          docker run --rm \
+            -v /var/run/docker.sock:/var/run/docker.sock \
+            ghcr.io/aquasecurity/trivy:latest image \
+            --exit-code 1 \
+            --severity CRITICAL \
+            ${{ secrets.DOCKERHUB_USERNAME }}/stockalert:${{ steps.vars.outputs.tag }}
 
       - name: Push sur Docker Hub
         run: |
